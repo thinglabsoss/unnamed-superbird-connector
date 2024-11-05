@@ -21,7 +21,8 @@ def action(act, arg = None):
         case "shuffle":
             sp.shuffle(arg)
         case "save":
-            saveItem(arg)
+            pass
+            #saveItem(arg)
         case "seek_to":
             sp.seek_track(round(arg))
         case "select_device":
@@ -317,7 +318,7 @@ def getChildrenOfItem(id, full_info):
                 })
 
         case "artist":
-            artist_tracks = sp.playlist_items(uid, "items(track(name,uri,is_playable,explicit,duration_ms,artists(name),album(images(url)))", )
+            artist_tracks = sp.artist_top_tracks(uid)['tracks']
             for i in artist_tracks:
                 out["total"] += 1
                 track_artists = i['artists'].pop(0)['name']
@@ -341,7 +342,7 @@ def getChildrenOfItem(id, full_info):
                 })
         
         case "album":
-            album_tracks = sp.playlist_items(uid, "items(track(name,uri,is_playable,explicit,duration_ms,artists(name),album(images(url)))", )
+            album_tracks = sp.album_tracks(uid)['items']
             for i in album_tracks:
                 out["total"] += 1
                 track_artists = i['artists'].pop(0)['name']
@@ -351,10 +352,10 @@ def getChildrenOfItem(id, full_info):
                 items.append({
                     'id': i['uri'],
                     'uri': i['uri'],
-                    'image_id': i['album']['images'][0]['url'],
+                    #'image_id': i['album']['images'][0]['url'], # Not needed for album apparently
                     'title': i['name'],
                     'subtitle': track_artists,
-                    'playable': i['is_playable'],
+                    'playable': True,
                     'has_children':False,
                     'available_offline':False,
                     'metadata':{

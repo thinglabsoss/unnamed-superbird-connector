@@ -25,11 +25,11 @@ remote_config_response = {
       'log_requests': False,
       'batch_ubi_logs': False,
       
-      # Controls the behaviour of the sunset screen. Has no affect before OS 8.9.2
+      # Controls the behaviour of the sunset screen. Has no effect before OS 8.9.2
       # Changing these isn't recommended but if you do it shouldn't harm anything
       'sunset_kill_switch': False, # Shows "Car Thing is discontinued" message
-      'sunset_info_screen_nag': False, # No affect?
-      'sunset_info_screen': False, # No affect?
+      'sunset_info_screen_nag': False, # No effect?
+      'sunset_info_screen': False, # Sometimes makes the sunset message comes up but it's tempermental
 
       # Effect is unknown. Changing these isn't recommended
       "app_launch_rssi_limit":0,
